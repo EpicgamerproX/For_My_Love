@@ -220,8 +220,8 @@ it really aches a lot to be forcefully separated this way… coz
     <!-- Add this at the bottom of your body before </body> -->
 <div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; transition: opacity 0.3s; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; background: white; padding: 10px;">
     <div style="display: flex; gap: 10px; margin-right: 15px;">
-        <button id="prevBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">❮</button>
-        <button id="nextBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">❯</button>
+        <button id="prevBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;" title="Previous track">❮</button>
+        <button id="nextBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;" title="Next track">❯</button>
     </div>
     <iframe 
         width="240" 
@@ -230,7 +230,8 @@ it really aches a lot to be forcefully separated this way… coz
         frameborder="no" 
         allow="autoplay" 
         style="transform: scale(0.85) translate(-15px, -10px); width: 280px; height: 120px;"
-        id="sc-widget">
+        id="sc-widget"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1995582387&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
     </iframe>
 </div>
 
@@ -245,12 +246,19 @@ it really aches a lot to be forcefully separated this way… coz
     let currentTrack = 0;
     let widget = null;
 
-    // Initialize player
+    // Initialize player after user interaction
     function initPlayer() {
         widget = SC.Widget(document.getElementById('sc-widget'));
+        
         widget.bind(SC.Widget.Events.READY, () => {
             widget.bind(SC.Widget.Events.FINISH, playNext);
-            loadTrack(currentTrack);
+            widget.setVolume(50);
+            widget.play();
+        });
+        
+        widget.bind(SC.Widget.Events.ERROR, (err) => {
+            console.error('SoundCloud Player Error:', err);
+            playNext();
         });
     }
 
@@ -280,15 +288,14 @@ it really aches a lot to be forcefully separated this way… coz
         loadTrack(currentTrack);
     }
 
-    // Initialize on user interaction
-    document.body.addEventListener('click', () => {
+    // Start player on first user interaction
+    document.body.addEventListener('click', function init() {
         if (!widget) {
             initPlayer();
-            document.body.removeEventListener('click', arguments.callee);
+            document.body.removeEventListener('click', init);
         }
     }, { once: true });
 </script>
-
     <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value.toLowerCase();
