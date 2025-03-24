@@ -99,53 +99,6 @@
              gap: 20px;
              margin-top: 20px;
          }
- 
-         .timeline-content img {
-             width: 200px;
-             height: 200px;
-             object-fit: cover;
-             border-radius: 10px;
-             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-             transition: transform 0.3s;
-         }
- 
-         .timeline-content img:hover {
-             transform: scale(1.05);
-         }
- 
-         #video-section {
-             margin: 40px 0;
-         }
- 
-         iframe {
-             border-radius: 10px;
-             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-         }
- 
-         #background-music {
-             position: fixed;
-             bottom: 20px;
-             right: 20px;
-             width: 300px;
-             opacity: 0.8;
-             transition: opacity 0.3s;
-         }
- 
-         #background-music:hover {
-             opacity: 1;
-         }
- 
-         .heart {
-             color: #e74c3c;
-             animation: heartbeat 1.5s infinite;
-             display: inline-block;
-         }
- 
-         @keyframes heartbeat {
-             0% { transform: scale(1); }
-             25% { transform: scale(1.1); }
-             50% { transform: scale(1); }
-             75% { transform: scale(1.1); }
              100% { transform: scale(1); }
          }
           #prevBtn:hover,
@@ -198,23 +151,11 @@
              <button onclick="checkAnswer()">Submit</button>
          </div>
  
-        <div class="timeline-content">
-    <div class="image-container">
-        <img src="https://i.ibb.co/QjDGfbB/IMG-20240515-213903-982.jpg" alt="Our Special Moment">
-        <div class="image-tooltip">Our Special Moment</div>
-    </div>
-    <!-- Add other images with same structure -->
-    <div class="image-container">
-        <img src="your-image-2.jpg" alt="Beach Date">
-        <div class="image-tooltip">Beach Date</div>
-    </div>
-    <div class="image-container">
-        <img src="your-image-3.jpg" alt="Mountain Adventure">
-        <div class="image-tooltip">Mountain Adventure</div>
-    </div>
-    <div class="image-container">
-        <img src="your-image-4.jpg" alt="Sunset Walk">
-        <div class="image-tooltip">Sunset Walk</div>
+    <div class="timeline-content">
+    <img src="https://i.ibb.co/0Vs3cDNC/IMG-20240330-174053-119.jpg" alt="US" border="0" />
+    <img src="https://i.ibb.co/67WB04Qz/Screenshot-20240214-120223-Instagram.jpg" alt="Where it all started" border="0" />
+    <img src="https://i.ibb.co/wZvzJ6L9/IMG-20241118-WA0016.jpg" alt="IMG-20241118-WA0016" border="0" />
+    <img src="https://i.ibb.co/tgTLrC1/IMG-20240717-224533-821.webp" alt="IMG-20240717-224533-821" border="0" />
     </div>
 </div>
  
@@ -358,16 +299,6 @@
          }
  
          // You can add more JavaScript here for additional functionality
-       document.addEventListener('DOMContentLoaded', function() {
-        // Sync alt text with tooltips
-        const images = document.querySelectorAll('.timeline-content img');
-        images.forEach(img => {
-            const container = img.parentElement;
-            const tooltip = container.querySelector('.image-tooltip');
-            if (tooltip) {
-                tooltip.textContent = img.alt;
-            }
-
          document.addEventListener('DOMContentLoaded', function() {
              // Animation for paragraphs
              const paragraphs = document.querySelectorAll('.paragraphs p');
