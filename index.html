@@ -369,7 +369,7 @@ it really aches a lot to be forcefully separated this way… coz
     paragraphs.forEach(para => {
         const highlight = document.createElement('div');
         highlight.className = 'text-highlight';
-        para.parentNode.insertBefore(highlight, para); // Add before the paragraph
+        para.parentNode.insertBefore(highlight, para.nextSibling); // Add before the paragraph
         para.style.position = 'relative'; // Add this line
 
         para.addEventListener('mousemove', (e) => {
