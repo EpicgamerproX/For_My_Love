@@ -152,6 +152,31 @@
           #nextBtn:hover {
               background-color: #6C5CE7 !important;
           }
+      .image-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .image-tooltip {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        white-space: nowrap;
+        z-index: 3;
+    }
+
+    .image-container:hover .image-tooltip {
+        opacity: 1;
+    }
      </style>
  </head>
  <body>
@@ -173,16 +198,25 @@
              <button onclick="checkAnswer()">Submit</button>
          </div>
  
-         <div id="timeline" class="hidden">
-             <h2>Our Beautiful Journey Together</h2>
-             <div class="timeline-content">
-              <!-- Replace these placeholder images with your Drive links -->
-              <img src="https://i.ibb.co/sJWr2mSK/IMG-20240330-174053-119.jpg" alt="US<33" border="0"></a>
-              <img src="https://i.ibb.co/XrC8xzH1/Screenshot-20240214-120223-Instagram.jpg" alt="All because of You" border="0"></a>
-              <img src="https://i.ibb.co/wZvzJ6L9/IMG-20241118-WA0016.jpg" alt="US<33" border="0"></a>
-              <img src="https://i.ibb.co/329RZhP/IMG-20240717-224533-821.webp" alt="That's You Obviously" border="0"></a>
-             </div>
-         </div>
+        <div class="timeline-content">
+    <div class="image-container">
+        <img src="https://i.ibb.co/QjDGfbB/IMG-20240515-213903-982.jpg" alt="Our Special Moment">
+        <div class="image-tooltip">Our Special Moment</div>
+    </div>
+    <!-- Add other images with same structure -->
+    <div class="image-container">
+        <img src="your-image-2.jpg" alt="Beach Date">
+        <div class="image-tooltip">Beach Date</div>
+    </div>
+    <div class="image-container">
+        <img src="your-image-3.jpg" alt="Mountain Adventure">
+        <div class="image-tooltip">Mountain Adventure</div>
+    </div>
+    <div class="image-container">
+        <img src="your-image-4.jpg" alt="Sunset Walk">
+        <div class="image-tooltip">Sunset Walk</div>
+    </div>
+</div>
  
          <div class="paragraphs">
              <p id="para3">A whole year filled with so many events and so much trouble, at this point
@@ -324,6 +358,16 @@
          }
  
          // You can add more JavaScript here for additional functionality
+       document.addEventListener('DOMContentLoaded', function() {
+        // Sync alt text with tooltips
+        const images = document.querySelectorAll('.timeline-content img');
+        images.forEach(img => {
+            const container = img.parentElement;
+            const tooltip = container.querySelector('.image-tooltip');
+            if (tooltip) {
+                tooltip.textContent = img.alt;
+            }
+
          document.addEventListener('DOMContentLoaded', function() {
              // Animation for paragraphs
              const paragraphs = document.querySelectorAll('.paragraphs p');
