@@ -57,25 +57,30 @@
         }
 
         .text-highlight {
-        position: absolute;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(
-            600px circle at var(--x) var(--y),
-            rgba(255, 255, 255, 0.1),
-            rgba(0, 0, 0, 0.5)
-        );
-        mix-blend-mode: screen;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    .paragraphs:hover .text-highlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                200px circle at var(--x) var(--y), /* Reduced from 600px */
+                rgba(255, 255, 255, 0.3), /* Increased opacity */
+                rgba(255, 255, 255, 0) 
+            );
+            mix-blend-mode: overlay; /* Changed from screen */
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1;
+        }
+        .paragraphs p {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .text-highlight {
         opacity: 1;
-    }
+        }
         
         #question-section {
             margin: 40px 0;
@@ -359,20 +364,21 @@ it really aches a lot to be forcefully separated this way… coz
     </script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const paragraphs = document.querySelectorAll('.paragraphs');
-        
-        paragraphs.forEach(para => {
-            const highlight = document.createElement('div');
-            highlight.className = 'text-highlight';
-            para.appendChild(highlight);
-            
-            para.addEventListener('mousemove', (e) => {
-                const rect = para.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                highlight.style.setProperty('--x', `${x}px`);
-                highlight.style.setProperty('--y', `${y}px`);
-            });
+    const paragraphs = document.querySelectorAll('.paragraphs p'); // Add 'p' here
+    
+    paragraphs.forEach(para => {
+        const highlight = document.createElement('div');
+        highlight.className = 'text-highlight';
+        para.parentNode.insertBefore(highlight, para); // Add before the paragraph
+        para.style.position = 'relative'; // Add this line
+
+        para.addEventListener('mousemove', (e) => {
+            const rect = para.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            highlight.style.setProperty('--x', `${x}px`);
+            highlight.style.setProperty('--y', `${y}px`);
+        });
             
             para.addEventListener('mouseleave', () => {
                 highlight.style.opacity = '0';
