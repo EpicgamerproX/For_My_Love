@@ -1,386 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love ❤️</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        
-        .background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        
-        h1, h2 {
-            color: #e74c3c;
-            margin-bottom: 30px;
-        }
-        
-        .paragraphs {
-        line-height: 1.7;
-        color: #555;
-        margin: 25px 0;
-        font-style: italic;
-        text-align: justify;
-        position: relative;
-        }
-
-         .text-highlight {
-             position: absolute;
-             pointer-events: none;
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>For My Love ❤️</title>
+     <style>
+         body {
+             font-family: 'Arial', sans-serif;
+             margin: 0;
+             padding: 0;
+             color: #333;
+             overflow-x: hidden;
+             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+         }
+ 
+         .background-animation {
+             position: fixed;
+             top: 0;
+             left: 0;
              width: 100%;
              height: 100%;
-             background: radial-gradient(
-                 100px circle at var(--x) var(--y),
-                 rgba(255, 255, 255, 0.4),
-                 rgba(255, 255, 255, 0)
-             );
-             mix-blend-mode: overlay;
-             opacity: 0;
+             z-index: -1;
+             background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+             background-size: 400% 400%;
+             animation: gradient 15s ease infinite;
+         }
+ 
+         @keyframes gradient {
+             0% { background-position: 0% 50%; }
+             50% { background-position: 100% 50%; }
+             100% { background-position: 0% 50%; }
+         }
+ 
+         .container {
+             max-width: 800px;
+             margin: 50px auto;
+             padding: 30px;
+             background-color: rgba(255, 255, 255, 0.9);
+             border-radius: 15px;
+             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+             text-align: center;
+         }
+ 
+         h1, h2 {
+             color: #e74c3c;
+             margin-bottom: 30px;
+         }
+ 
+         .paragraphs {
+         line-height: 1.7;
+         color: #555;
+         margin: 25px 0;
+         font-style: italic;
+         text-align: justify;
+         }
+ 
+         #question-section {
+             margin: 40px 0;
+             padding: 20px;
+             background-color: #f8f9fa;
+             border-radius: 10px;
+         }
+ 
+         #answer {
+             padding: 10px;
+             width: 70%;
+             border: 2px solid #e74c3c;
+             border-radius: 5px;
+             margin-right: 10px;
+         }
+ 
+         button {
+             padding: 10px 20px;
+             background-color: #e74c3c;
+             color: white;
+             border: none;
+             border-radius: 5px;
+             cursor: pointer;
+             transition: background-color 0.3s;
+         }
+ 
+         button:hover {
+             background-color: #c0392b;
+         }
+ 
+         .hidden {
+             display: none;
+         }
+ 
+         #timeline {
+             margin: 40px 0;
+         }
+ 
+         .timeline-content {
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: center;
+             gap: 20px;
+             margin-top: 20px;
+         }
+ 
+         .timeline-content img {
+             width: 200px;
+             height: 200px;
+             object-fit: cover;
+             border-radius: 10px;
+             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+             transition: transform 0.3s;
+         }
+ 
+         .timeline-content img:hover {
+             transform: scale(1.05);
+         }
+ 
+         #video-section {
+             margin: 40px 0;
+         }
+ 
+         iframe {
+             border-radius: 10px;
+             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+         }
+ 
+         #background-music {
+             position: fixed;
+             bottom: 20px;
+             right: 20px;
+             width: 300px;
+             opacity: 0.8;
              transition: opacity 0.3s;
-             z-index: 1;
          }
-        .paragraphs p {
-            position: relative;
-            z-index: 2;
-            overflow: hidden;
-        }
-        
-        #question-section {
-            margin: 40px 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        #answer {
-            padding: 10px;
-            width: 70%;
-            border: 2px solid #e74c3c;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-        
-        button {
-            padding: 10px 20px;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: #c0392b;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        #timeline {
-            margin: 40px 0;
-        }
-        
-        .timeline-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .timeline-content img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .timeline-content img:hover {
-            transform: scale(1.05);
-        }
-        
-        #video-section {
-            margin: 40px 0;
-        }
-        
-        iframe {
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        #background-music {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        
-        #background-music:hover {
-            opacity: 1;
-        }
-        
-        .heart {
-            color: #e74c3c;
-            animation: heartbeat 1.5s infinite;
-            display: inline-block;
-        }
-        
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            25% { transform: scale(1.1); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-         #prevBtn:hover,
-         #nextBtn:hover {
-             background-color: #6C5CE7 !important;
+ 
+         #background-music:hover {
+             opacity: 1;
          }
-    </style>
-</head>
-<body>
-    <div class="background-animation"></div>
-    <div class="container">
-        <h1>For My <span class="heart">❤️</span> Sweetheart</h1>
-        <div class="paragraphs">
-            <p id="para1">Hello~<br><br>
-        If you’re seeing this then my idea worked out, this is one of my most beautiful work of all time<br>
-        It’s pretty obvious now that the playlist i had made has a purpose (Pre-planned it so long ago).</p>
-
-        <p id="para2">I’m sorry for delaying this a bit too much<333<br>
-        but im very sure its all worth it hehehe</p>
-        </div>
-
-        <div id="question-section">
-            <p>What is my sweetheart's favorite movie?</p>
-            <input type="text" id="answer" placeholder="Enter your answer">
-            <button onclick="checkAnswer()">Submit</button>
-        </div>
-
-        <div id="timeline" class="hidden">
-            <h2>Our Beautiful Journey Together</h2>
-            <div class="timeline-content">
-                <!-- Timeline images will be inserted here dynamically -->
-                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Our moment">
-                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Special day">
-                <img src="https://images.unsplash.com/photo-1530968464165-7e0a963624c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Adventure together">
-                <img src="https://images.unsplash.com/photo-1529257414772-1960b7bea4eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Romantic sunset">
-            </div>
-        </div>
-        
-        <div class="paragraphs">
-            <p id="para3">A whole year filled with so many events and so much trouble, at this point
-basically a part of these memories now. All this here was such a rollercoaster
-of emotions, all this is what created the strong bond between us…
-Starting with your bold proposal and many awkward and silent conversations
-to the few dates we’ve been to, you make me the most happiest and most lively
-I’ve ever been. I still cannot imagine the mess I’d be if I didn't have you.
-You changed a lot of how my life was, from trying to make myself happy with
-A lot of fake smiles and a lot of adjusting and amending for others to be accepted
-among a group of people, to now just being happy even when I literally have 
-nothing to do or no one to talk to coz at the end of every single day I wait for that 
-one Gmeet link that we’d end up staying in for 4-5 hours everyday.
-Waking up everyday now seems less of a headache and more of something I’d
-do, knowing I get to see you again in school. Well, no school for me anymore and
-it really aches a lot to be forcefully separated this way… coz
-</p>
-            <!-- In the video-section div -->
-<div id="video-section" class="hidden">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/3qfhltcj4Es?si=ChvgF3sEhXKl1_JB&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    
-    <p style="margin-top: 30px; text-align: center; font-style: italic; color: #666; line-height: 1.6;">
-        That still doesn’t change the fact that you are always gonna be my baby, any day<br>
-        you feel off, any day you feel overwhelmed, any day you feel like life is bitter…<br>
-        I’m always there for you my Love.<br><br>
-        If i’m ready to type out and put such efforts into making this, of course i’ll work my<br>
-        ass off to make you laugh and smile (and ik you know it the best, being with me for<br>
-        more than an year and i have tried my best to keep up all my promises)<br><br>
-        The glow up we’ve been through, the emotional maturity we have had, the immense<br>
-        communication and the games we had played so many nights. God will i miss seeing<br>
-        your pretty face across the open assembly during some of those lousy friday mornings<br>
-        and getting to sit with you and have lunch with the feeling of “Butterflies in my Stomach”,<br>
-        looking at each other with so many emotions trapped right behind our eyes.
-    </p>
-</div>
-        </div>
-    </div>
-    
-    <!-- Add this at the bottom of your body before </body> -->
-<div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; 
-           transition: opacity 0.3s; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-           display: flex; align-items: center; background: #111; padding: 10px; border: 2px solid #00ff00;">
-    <div style="display: flex; gap: 10px; margin-right: 15px; z-index: 1;">
-        <button id="prevBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
-                  border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Previous track">❮</button>
-        <button id="nextBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
-                  border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Next track">❯</button>
-    </div>
-    <div style="position: relative; width: 240px; height: 100px; overflow: hidden;">
-        <iframe 
-            width="240" 
-            height="100" 
-            scrolling="no" 
-            frameborder="no" 
-            allow="autoplay" 
-            style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.9); 
-                   width: 280px; height: 120px; background: transparent;"
-            id="sc-widget"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1995582387&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
-        </iframe>
-    </div>
-</div>
-
-<script src="https://w.soundcloud.com/player/api.js"></script>
-<script>
-    // Playlist configuration
-    const playlist = [
-    'https://api.soundcloud.com/tracks/1995582387', // Blue - Yung Kai
-    'https://api.soundcloud.com/tracks/373478999',  // Ed Sheeran - Perfect
-    'https://api.soundcloud.com/tracks/22121969',   // Senorita - Zindagi Na Milegi Dobara
-    'https://api.soundcloud.com/tracks/366184949',  // I Wanna Be Yours - Silas
-    ];
-    
-    let currentTrack = 0;
-    let widget = null;
-
-    // Initialize player after user interaction
-    function initPlayer() {
-        widget = SC.Widget(document.getElementById('sc-widget'));
-        
-        widget.bind(SC.Widget.Events.READY, () => {
-            widget.bind(SC.Widget.Events.FINISH, playNext);
-            widget.setVolume(50);
-            widget.play();
-        });
-        
-        widget.bind(SC.Widget.Events.ERROR, (err) => {
-            console.error('SoundCloud Player Error:', err);
-            playNext();
-        });
-    }
-
-    // Load track by index
-    function loadTrack(index) {
-        currentTrack = index;
-        widget.load(playlist[currentTrack], {
-            auto_play: true,
-            color: '#ff5500',
-            hide_related: true,
-            show_comments: false,
-            show_user: false
-        });
-    }
-
-    // Navigation controls
-    document.getElementById('nextBtn').addEventListener('click', playNext);
-    document.getElementById('prevBtn').addEventListener('click', playPrev);
-
-    function playNext() {
-        currentTrack = (currentTrack + 1) % playlist.length;
-        loadTrack(currentTrack);
-    }
-
-    function playPrev() {
-        currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-        loadTrack(currentTrack);
-    }
-
-    // Start player on first user interaction
-    document.body.addEventListener('click', function init() {
-        if (!widget) {
-            initPlayer();
-            document.body.removeEventListener('click', init);
-        }
-    }, { once: true });
-</script>
-    <script>
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.toLowerCase();
-            const correctAnswers = ['zindagi na milegi dobara'];
-            
-            if (correctAnswers.includes(answer)) {
-                alert("Umma For You<333");
-                document.getElementById('timeline').classList.remove('hidden');
-                document.getElementById('video-section').classList.remove('hidden');
-            } else {
-                alert("Close! But that's not quite it. Try again, sweetheart!");
-            }
-        }
-        
-        // You can add more JavaScript here for additional functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animation for paragraphs
-            const paragraphs = document.querySelectorAll('.paragraphs p');
-            paragraphs.forEach((para, index) => {
-                setTimeout(() => {
-                    para.style.opacity = '1';
-                    para.style.transform = 'translateY(0)';
-                }, 300 * index);
-            });
-        });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const paragraphs = document.querySelectorAll('.paragraphs p');
-        
-        paragraphs.forEach(para => {
-            const highlight = document.createElement('div');
-            highlight.className = 'text-highlight';
-            para.appendChild(highlight); // Append INSIDE the paragraph
-            
-            para.addEventListener('mousemove', (e) => {
-                const rect = para.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                highlight.style.setProperty('--x', `${x}px`);
-                highlight.style.setProperty('--y', `${y}px`);
-                highlight.style.opacity = '1';
-            });
-            
-            para.addEventListener('mouseleave', () => {
-                highlight.style.opacity = '0';
-            });
-        });
-    });
-    </script>
-    
-</body>
-</html>
+ 
+         .heart {
+             color: #e74c3c;
+             animation: heartbeat 1.5s infinite;
+             display: inline-block;
+         }
+ 
+         @keyframes heartbeat {
+             0% { transform: scale(1); }
+             25% { transform: scale(1.1); }
+             50% { transform: scale(1); }
+             75% { transform: scale(1.1); }
+             100% { transform: scale(1); }
+         }
+          #prevBtn:hover,
+          #nextBtn:hover {
+              background-color: #6C5CE7 !important;
+          }
+     </style>
+ </head>
+ <body>
+     <div class="background-animation"></div>
+     <div class="container">
+         <h1>For My <span class="heart">❤️</span> Sweetheart</h1>
+         <div class="paragraphs">
+             <p id="para1">Hello~<br><br>
+         If you’re seeing this then my idea worked out, this is one of my most beautiful work of all time<br>
+         It’s pretty obvious now that the playlist i had made has a purpose (Pre-planned it so long ago).</p>
+ 
+         <p id="para2">I’m sorry for delaying this a bit too much<333<br>
+         but im very sure its all worth it hehehe</p>
+         </div>
+ 
+         <div id="question-section">
+             <p>What is my sweetheart's favorite movie?</p>
+             <input type="text" id="answer" placeholder="Enter your answer">
+             <button onclick="checkAnswer()">Submit</button>
+         </div>
+ 
+         <div id="timeline" class="hidden">
+             <h2>Our Beautiful Journey Together</h2>
+             <div class="timeline-content">
+                 <!-- Timeline images will be inserted here dynamically -->
+                 <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Our moment">
+                 <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Special day">
+                 <img src="https://images.unsplash.com/photo-1530968464165-7e0a963624c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Adventure together">
+                 <img src="https://images.unsplash.com/photo-1529257414772-1960b7bea4eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Romantic sunset">
+             </div>
+         </div>
+ 
+         <div class="paragraphs">
+             <p id="para3">A whole year filled with so many events and so much trouble, at this point
+ basically a part of these memories now. All this here was such a rollercoaster
+ of emotions, all this is what created the strong bond between us…
+ Starting with your bold proposal and many awkward and silent conversations
+ to the few dates we’ve been to, you make me the most happiest and most lively
+ I’ve ever been. I still cannot imagine the mess I’d be if I didn't have you.
+ You changed a lot of how my life was, from trying to make myself happy with
+ A lot of fake smiles and a lot of adjusting and amending for others to be accepted
+ among a group of people, to now just being happy even when I literally have 
+ nothing to do or no one to talk to coz at the end of every single day I wait for that 
+ one Gmeet link that we’d end up staying in for 4-5 hours everyday.
+ Waking up everyday now seems less of a headache and more of something I’d
+ do, knowing I get to see you again in school. Well, no school for me anymore and
+ it really aches a lot to be forcefully separated this way… coz
+ </p>
+             <!-- In the video-section div -->
+ <div id="video-section" class="hidden">
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/3qfhltcj4Es?si=ChvgF3sEhXKl1_JB&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ 
+     <p style="margin-top: 30px; text-align: center; font-style: italic; color: #666; line-height: 1.6;">
+         That still doesn’t change the fact that you are always gonna be my baby, any day<br>
+         you feel off, any day you feel overwhelmed, any day you feel like life is bitter…<br>
+         I’m always there for you my Love.<br><br>
+         If i’m ready to type out and put such efforts into making this, of course i’ll work my<br>
+         ass off to make you laugh and smile (and ik you know it the best, being with me for<br>
+         more than an year and i have tried my best to keep up all my promises)<br><br>
+         The glow up we’ve been through, the emotional maturity we have had, the immense<br>
+         communication and the games we had played so many nights. God will i miss seeing<br>
+         your pretty face across the open assembly during some of those lousy friday mornings<br>
+         and getting to sit with you and have lunch with the feeling of “Butterflies in my Stomach”,<br>
+         looking at each other with so many emotions trapped right behind our eyes.
+     </p>
+ </div>
+         </div>
+     </div>
+ 
+     <!-- Add this at the bottom of your body before </body> -->
+ <div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; transition: opacity 0.3s; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; background: #111; padding: 10px; border: 2px solid #00ff00;">
+     <div style="display: flex; gap: 10px; margin-right: 15px;">
+         <button id="prevBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Previous track">❮</button>
+         <button id="nextBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Next track">❯</button>
+ <div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; 
+            transition: opacity 0.3s; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; background: #111; padding: 10px; border: 2px solid #00ff00;">
+     <div style="display: flex; gap: 10px; margin-right: 15px; z-index: 1;">
+         <button id="prevBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
+                   border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Previous track">❮</button>
+         <button id="nextBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
+                   border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Next track">❯</button>
+     </div>
+     <div style="position: relative; width: 240px; height: 100px; overflow: hidden;">
+         <iframe 
+             width="240" 
+             height="100" 
+             scrolling="no" 
+             frameborder="no" 
+             allow="autoplay" 
+             style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.9); 
+                    width: 280px; height: 120px; background: transparent;"
+             id="sc-widget"
+             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1995582387&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+         </iframe>
+     </div>
+     <iframe 
+         width="240" 
+         height="100" 
+         scrolling="no" 
+         frameborder="no" 
+         allow="autoplay" 
+         style="transform: scale(0.85) translate(-15px, -10px); width: 280px; height: 120px; background: transparent;"
+         id="sc-widget"
+         src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1995582387&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+     </iframe>
+ </div>
+ 
+ <script src="https://w.soundcloud.com/player/api.js"></script>
+ <script>
+     // Playlist configuration
+     const playlist = [
+     'https://api.soundcloud.com/tracks/1995582387', // Blue - Yung Kai
+     'https://api.soundcloud.com/tracks/373478999',  // Ed Sheeran - Perfect
+     'https://api.soundcloud.com/tracks/22121969',   // Senorita - Zindagi Na Milegi Dobara
+     'https://api.soundcloud.com/tracks/366184949',  // I Wanna Be Yours - Silas
+     ];
+ 
+     let currentTrack = 0;
+     let widget = null;
+ 
+     // Initialize player after user interaction
+     function initPlayer() {
+         widget = SC.Widget(document.getElementById('sc-widget'));
+ 
+         widget.bind(SC.Widget.Events.READY, () => {
+             widget.bind(SC.Widget.Events.FINISH, playNext);
+             widget.setVolume(50);
+             widget.play();
+         });
+ 
+         widget.bind(SC.Widget.Events.ERROR, (err) => {
+             console.error('SoundCloud Player Error:', err);
+             playNext();
+         });
+     }
+ 
+     // Load track by index
+     function loadTrack(index) {
+         currentTrack = index;
+         widget.load(playlist[currentTrack], {
+             auto_play: true,
+             color: '#ff5500',
+             hide_related: true,
+             show_comments: false,
+             show_user: false
+         });
+     }
+ 
+     // Navigation controls
+     document.getElementById('nextBtn').addEventListener('click', playNext);
+     document.getElementById('prevBtn').addEventListener('click', playPrev);
+ 
+     function playNext() {
+         currentTrack = (currentTrack + 1) % playlist.length;
+         loadTrack(currentTrack);
+     }
+ 
+     function playPrev() {
+         currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+         loadTrack(currentTrack);
+     }
+ 
+     // Start player on first user interaction
+     document.body.addEventListener('click', function init() {
+         if (!widget) {
+             initPlayer();
+             document.body.removeEventListener('click', init);
+         }
+     }, { once: true });
+ </script>
+     <script>
+         function checkAnswer() {
+             const answer = document.getElementById('answer').value.toLowerCase();
+             const correctAnswers = ['zindagi na milegi dobara'];
+ 
+             if (correctAnswers.includes(answer)) {
+                 alert("Umma For You<333");
+                 document.getElementById('timeline').classList.remove('hidden');
+                 document.getElementById('video-section').classList.remove('hidden');
+             } else {
+                 alert("Close! But that's not quite it. Try again, sweetheart!");
+             }
+         }
+ 
+         // You can add more JavaScript here for additional functionality
+         document.addEventListener('DOMContentLoaded', function() {
+             // Animation for paragraphs
+             const paragraphs = document.querySelectorAll('.paragraphs p');
+             paragraphs.forEach((para, index) => {
+                 setTimeout(() => {
+                     para.style.opacity = '1';
+                     para.style.transform = 'translateY(0)';
+                 }, 300 * index);
+             });
+         });
+     </script>
+ </body>
+ </html>
