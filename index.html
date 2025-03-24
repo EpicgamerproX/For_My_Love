@@ -222,43 +222,29 @@
      </div>
  
      <!-- Add this at the bottom of your body before </body> -->
- <div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; transition: opacity 0.3s; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; background: #111; padding: 10px; border: 2px solid #00ff00;">
-     <div style="display: flex; gap: 10px; margin-right: 15px;">
-         <button id="prevBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Previous track">❮</button>
-         <button id="nextBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Next track">❯</button>
- <div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; 
-            transition: opacity 0.3s; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-            display: flex; align-items: center; background: #111; padding: 10px; border: 2px solid #00ff00;">
-     <div style="display: flex; gap: 10px; margin-right: 15px; z-index: 1;">
-         <button id="prevBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
-                   border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Previous track">❮</button>
-         <button id="nextBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
-                   border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Next track">❯</button>
-     </div>
-     <div style="position: relative; width: 240px; height: 100px; overflow: hidden;">
-         <iframe 
-             width="240" 
-             height="100" 
-             scrolling="no" 
-             frameborder="no" 
-             allow="autoplay" 
-             style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.9); 
-                    width: 280px; height: 120px; background: transparent;"
-             id="sc-widget"
-             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1995582387&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
-         </iframe>
-     </div>
-     <iframe 
-         width="240" 
-         height="100" 
-         scrolling="no" 
-         frameborder="no" 
-         allow="autoplay" 
-         style="transform: scale(0.85) translate(-15px, -10px); width: 280px; height: 120px; background: transparent;"
-         id="sc-widget"
-         src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1995582387&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
-     </iframe>
- </div>
+<div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; 
+           transition: opacity 0.3s; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+           display: flex; align-items: center; background: #111; padding: 10px; border: 2px solid #00ff00;">
+    <div style="display: flex; gap: 10px; margin-right: 15px; z-index: 1;">
+        <button id="prevBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
+                  border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Previous track">❮</button>
+        <button id="nextBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
+                  border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Next track">❯</button>
+    </div>
+    <div style="position: relative; width: 240px; height: 100px; overflow: hidden;">
+        <iframe 
+            width="240" 
+            height="100" 
+            scrolling="no" 
+            frameborder="no" 
+            allow="autoplay" 
+            style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.9); 
+                   width: 280px; height: 120px; background: transparent;"
+            id="sc-widget"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1995582387&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+        </iframe>
+    </div>
+</div>
  
  <script src="https://w.soundcloud.com/player/api.js"></script>
  <script>
