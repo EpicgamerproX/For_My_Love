@@ -40,6 +40,7 @@
               border-radius: 15px;
               box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
               text-align: center;
+              transition: all 0.3s ease;
           }
  
           h1, h2 {
@@ -171,64 +172,101 @@
 
            /* CAPTCHA Styles */
     #captcha-section {
-        margin: 40px 0;
-        text-align: center;
-    }
+            margin: 40px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dadce0;
+            text-align: center;
+        }
 
-    .captcha-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin: 20px auto;
-        max-width: 600px;
-    }
+        .captcha-header {
+            margin-bottom: 20px;
+        }
 
-    .captcha-image {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-        border: 2px solid transparent;
-        aspect-ratio: 1/1;
-    }
-    
-    .captcha-image {
-        min-height: 0; /* Fixes grid overflow issue */
-        min-width: 0; /* Fixes grid overflow issue */
-    }
+        .captcha-header h3 {
+            color: #202124;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
 
-    .captcha-image.selected {
-        border-color: #e74c3c;
-        transform: scale(0.95);
-        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
-    }
+        .captcha-header p {
+            color: #5f6368;
+            font-size: 0.9rem;
+        }
 
-    #captcha-error {
-        color: #e74c3c;
-        margin-top: 10px;
-        display: none;
-    }
-        #final-content {
-    margin: 40px 0;
-    text-align: center;
-}
+        .captcha-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
 
-.photo-book {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 30px;
-}
+        .captcha-image {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%; /* Square aspect ratio */
+            position: relative;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f1f3f4;
+        }
 
-.photo-book img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+        .captcha-image img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+        }
+
+        .captcha-image.selected {
+            border-color: #1a73e8;
+            box-shadow: 0 2px 4px rgba(26, 115, 232, 0.2);
+        }
+
+        #captcha-error {
+            color: #d93025;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+       #final-content {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .photo-book {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .photo-book img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .final-message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #202124;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
       </style>
   </head>
   <body>
@@ -300,40 +338,62 @@
       </div>
 
     <div id="captcha-section" class="hidden">
-    <h3>Prove You're Not A Robot</h3>
-    <p>Select images that are your most favorites:</p>
-    
-    <div class="captcha-grid">
-        <!-- Replace these with your actual images -->
-        <img src="https://i.ibb.co/20Gwb5WY/1723356033027.jpg" class="captcha-image" data-correct="true">
-        <img src="https://i.ibb.co/MkfTCQrD/IMG-20240901-WA0057.jpg" class="captcha-image" data-correct="false">
-        <img src="https://i.ibb.co/4g5mR8Tf/IMG-20240330-180337-655.jpg" class="captcha-image" data-correct="true">
-        <img src="https://i.ibb.co/BKnc1bkJ/IMG-20240522-WA0030.jpg" class="captcha-image" data-correct="false">
-        <img src="https://i.ibb.co/Ndn70r0p/IMG-20240510-WA0008.jpg" class="captcha-image" data-correct="true">
-        <img src="https://i.ibb.co/wNygPSYk/IMG-20240806-215825-268.jpg" class="captcha-image" data-correct="false">
-    </div>
+            <div class="captcha-header">
+                <h3>Select all that apply</h3>
+                <p>Select all images that are your favorites</p>
+            </div>
+            
+            <div class="captcha-grid">
+                <div class="captcha-image" data-correct="true">
+                    <img src="https://i.ibb.co/20Gwb5WY/1723356033027.jpg">
+                </div>
+                <div class="captcha-image" data-correct="false">
+                    <img src="https://i.ibb.co/MkfTCQrD/IMG-20240901-WA0057.jpg">
+                </div>
+                <div class="captcha-image" data-correct="true">
+                    <img src="https://i.ibb.co/4g5mR8Tf/IMG-20240330-180337-655.jpg">
+                </div>
+                <div class="captcha-image" data-correct="false">
+                    <img src="https://i.ibb.co/BKnc1bkJ/IMG-20240522-WA0030.jpg">
+                </div>
+                <div class="captcha-image" data-correct="true">
+                    <img src="https://i.ibb.co/Ndn70r0p/IMG-20240510-WA0008.jpg">
+                </div>
+                <div class="captcha-image" data-correct="false">
+                    <img src="https://i.ibb.co/wNygPSYk/IMG-20240806-215825-268.jpg">
+                </div>
+            </div>
 
-    <button onclick="validateCaptcha()" style="margin-top: 20px;">Confirm </button>
-    <div id="captcha-error">Not quite, Try again</div>
-</div>
+            <button onclick="validateCaptcha()" 
+                    style="margin-top: 25px;
+                           padding: 10px 24px;
+                           background: #1a73e8;
+                           color: white;
+                           border: none;
+                           border-radius: 4px;
+                           font-weight: 500;
+                           cursor: pointer;">
+                Verify
+            </button>
+            <div id="captcha-error">Please try again</div>
+        </div>
 
 <!-- Hidden content to reveal -->
-<div id="final-content" class="hidden">
-        <div class="paragraphs">
-            <h2>HAH MORE PICS FOR YOU HEHEHEHEHE</h2>
+        <div id="final-content" class="hidden">
+            <h2>Our Special Memories</h2>
             <div class="photo-book">
-                <!-- Add your photo book images here -->
-                <img src="image1.jpg" alt="Memory 1">
-                <img src="image2.jpg" alt="Memory 2">
-                <img src="image3.jpg" alt="Memory 3">
-                <img src="image4.jpg" alt="Memory 4">
+                <!-- Add your photos here -->
+                <img src="memory1.jpg" alt="Our memory 1">
+                <img src="memory2.jpg" alt="Our memory 2">
+                <img src="memory3.jpg" alt="Our memory 3">
+                <img src="memory4.jpg" alt="Our memory 4">
             </div>
-            <p style="margin-top: 20px;">
-                This is our forever story... [your final message]
-            </p>
+            
+            <div class="final-message">
+                <p>Every moment with you is precious... (your final message here)</p>
+            </div>
         </div>
     </div>
-</div>
  
       <!-- Add this at the bottom of your body before </body> -->
  <div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; 
@@ -424,40 +484,43 @@
       }, { once: true });
   </script>
   <script>
-    let selectedImages = [];
+          let selectedImages = [];
 
-    function setupCaptcha() {
-        document.querySelectorAll('.captcha-image').forEach(img => {
-            img.addEventListener('click', function() {
-                this.classList.toggle('selected');
-                const isCorrect = this.dataset.correct === 'true';
-                
-                if(this.classList.contains('selected')) {
-                    selectedImages.push(isCorrect);
-                } else {
-                    selectedImages = selectedImages.filter(item => item !== isCorrect);
-                }
-            });
-        });
-    }
-
-    function validateCaptcha() {
-        const requiredCorrect = 3; // Number of correct images needed
-        const correctSelections = selectedImages.filter(Boolean).length;
-        
-        if(correctSelections === requiredCorrect) {
-            document.getElementById('captcha-error').style.display = 'none';
-            document.getElementById('final-content').classList.remove('hidden');
-            document.getElementById('captcha-section').classList.add('hidden');
-        } else {
-            document.getElementById('captcha-error').style.display = 'block';
-            // Reset after wrong attempt
-            selectedImages = [];
-            document.querySelectorAll('.captcha-image').forEach(img => {
-                img.classList.remove('selected');
+        function setupCaptcha() {
+            document.querySelectorAll('.captcha-image').forEach(container => {
+                container.addEventListener('click', function() {
+                    this.classList.toggle('selected');
+                    const isCorrect = this.dataset.correct === 'true';
+                    
+                    if(this.classList.contains('selected')) {
+                        selectedImages.push(isCorrect);
+                    } else {
+                        selectedImages = selectedImages.filter(item => item !== isCorrect);
+                    }
+                });
             });
         }
-    }
+
+        function validateCaptcha() {
+            const requiredCorrect = 2; // Adjust based on your correct images
+            const correctSelections = selectedImages.filter(Boolean).length;
+            
+            if(correctSelections === requiredCorrect) {
+                document.getElementById('captcha-error').style.display = 'none';
+                document.getElementById('final-content').classList.remove('hidden');
+                document.getElementById('captcha-section').classList.add('hidden');
+                
+                // Expand container if needed
+                document.querySelector('.container').style.paddingBottom = '60px';
+            } else {
+                document.getElementById('captcha-error').style.display = 'block';
+                // Reset selections
+                selectedImages = [];
+                document.querySelectorAll('.captcha-image').forEach(img => {
+                    img.classList.remove('selected');
+                });
+            }
+        }
 
     // Update your existing checkAnswer function
     function checkAnswer() {
@@ -470,6 +533,8 @@
             document.getElementById('video-section').classList.remove('hidden');
             document.getElementById('captcha-section').classList.remove('hidden');
             setupCaptcha();
+            document.querySelector('.container').style.minHeight = '600px';
+        }
         } else {
             alert("Close! But that's not quite it. Try again, sweetheart!");
         }
