@@ -1,147 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love ❤️</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-
-        .background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        h1, h2 {
-            color: #e74c3c;
-            margin-bottom: 30px;
-        }
-
-        .paragraphs {
-            line-height: 1.7;
-            color: #555;
-            margin: 25px 0;
-            font-style: italic;
-            text-align: justify;
-        }
-
-        #question-section {
-            margin: 40px 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-        }
-
-        #answer {
-            padding: 10px;
-            width: 70%;
-            border: 2px solid #e74c3c;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #c0392b;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        #timeline {
-            margin: 40px 0;
-        }
-
-        .timeline-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .timeline-content img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .timeline-content img:hover {
-            transform: scale(1.05);
-        }
-
-        #video-section {
-            margin: 40px 0;
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>For My Love ❤️</title>
+      <style>
+          body {
+              font-family: 'Arial', sans-serif;
+              margin: 0;
+              padding: 0;
+              color: #333;
+              overflow-x: hidden;
+              background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+          }
+ 
+          .background-animation {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: -1;
+              background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+              background-size: 400% 400%;
+              animation: gradient 15s ease infinite;
+          }
+ 
+          @keyframes gradient {
+              0% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
+          }
+ 
+          .container {
+              max-width: 800px;
+              margin: 50px auto;
+              padding: 30px;
+              background-color: rgba(255, 255, 255, 0.9);
+              border-radius: 15px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+              text-align: center;
+              transition: all 0.3s ease;
+          }
+ 
+          h1, h2 {
+              color: #e74c3c;
+              margin-bottom: 30px;
+          }
+ 
+          .paragraphs {
+          line-height: 1.7;
+          color: #555;
+          margin: 25px 0;
+          font-style: italic;
+          text-align: justify;
+          }
+ 
+          #question-section {
+              margin: 40px 0;
+              padding: 20px;
+              background-color: #f8f9fa;
+              border-radius: 10px;
+          }
+ 
+          #answer {
+              padding: 10px;
+              width: 70%;
+              border: 2px solid #e74c3c;
+              border-radius: 5px;
+              margin-right: 10px;
+          }
+ 
+          button {
+              padding: 10px 20px;
+              background-color: #e74c3c;
+              color: white;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: background-color 0.3s;
+          }
+ 
+          button:hover {
+              background-color: #c0392b;
+          }
+ 
+          .hidden {
+              display: none !important;
+          }
+ 
+          #timeline {
+              margin: 40px 0;
+          }
+ 
+          .timeline-content {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 20px;
+              margin-top: 20px;
+          }
+ 
+          .timeline-content img {
+              width: 200px;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 10px;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+              transition: transform 0.3s;
+          }
+ 
+          .timeline-content img:hover {
+              transform: scale(1.05);
+          }
+ 
+          #video-section {
+              margin: 40px 0;
+          }
+ 
+          #video-section {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             width: 100%;
             padding: 20px 0;
-        }
-
+          }
+        
         #video-section iframe {
-            margin: 0 auto;
-            display: block;
-            width: 100%;
-            max-width: 560px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
+          margin: 0 auto;
+          display: block;
+          width: 100%;
+          max-width: 560px; /* Maintain video aspect ratio */
+        } 
+           
+          iframe {
+              border-radius: 10px;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          }
+ 
+          #background-music {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 300px;
+              opacity: 0.8;
+              transition: opacity 0.3s;
+          }
+ 
+          #background-music:hover {
+              opacity: 1;
+          }
+ 
+          .heart {
+              color: #e74c3c;
+              animation: heartbeat 1.5s infinite;
+              display: inline-block;
+          }
+ 
+          @keyframes heartbeat {
+              0% { transform: scale(1); }
+              25% { transform: scale(1.1); }
+              50% { transform: scale(1); }
+              75% { transform: scale(1.1); }
+              100% { transform: scale(1); }
+          }
+           #prevBtn:hover,
+           #nextBtn:hover {
+               background-color: #6C5CE7 !important;
+           }
 
-        /* CAPTCHA Styles */
-        #captcha-section {
+           /* CAPTCHA Styles */
+    #captcha-section {
             margin: 40px 0;
             padding: 25px;
             background: #f8f9fa;
             border-radius: 8px;
             border: 1px solid #dadce0;
             text-align: center;
+        }
+
+        .captcha-header {
+            margin-bottom: 20px;
+        }
+
+        .captcha-header h3 {
+            color: #202124;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .captcha-header p {
+            color: #5f6368;
+            font-size: 0.9rem;
         }
 
         .captcha-grid {
@@ -155,7 +206,7 @@
         .captcha-image {
             width: 100%;
             height: 0;
-            padding-bottom: 100%;
+            padding-bottom: 100%; /* Square aspect ratio */
             position: relative;
             border: 2px solid transparent;
             border-radius: 8px;
@@ -182,12 +233,14 @@
         #captcha-error {
             color: #d93025;
             margin-top: 15px;
+            font-size: 0.9rem;
             display: none;
         }
-
-        #final-content {
+        
+       #final-content {
             margin-top: 40px;
             padding-top: 30px;
+            border-top: 1px solid #eee;
         }
 
         .photo-book {
@@ -205,52 +258,49 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .heart {
-            color: #e74c3c;
-            animation: heartbeat 1.5s infinite;
-            display: inline-block;
+        .final-message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #202124;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
         }
-
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            25% { transform: scale(1.1); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-    </style>
-</head>
-<body>
-    <div class="background-animation"></div>
-    <div class="container">
-        <h1>For My <span class="heart">❤️</span> Sweetheart</h1>
-        
-        <div class="paragraphs">
-            <p>Hello~<br><br>
-            If you're seeing this then my idea worked out, this is one of my most beautiful work of all time.<br>
-            It's pretty obvious now that the playlist I had made has a purpose (pre-planned it so long ago).</p>
-
-            <p>I'm sorry for delaying this a bit too much<333<br>
-            but I'm very sure it's all worth it hehehe</p>
-        </div>
-
-        <div id="question-section">
-            <p>What is my sweetheart's favorite movie?</p>
-            <input type="text" id="answer" placeholder="Enter your answer">
-            <button onclick="checkAnswer()">Submit</button>
-        </div>
-
-        <div id="timeline" class="hidden">
-            <h2>Collection Of Me and My Sweetheart</h2>
-            <div class="timeline-content">
-                <img src="https://i.ibb.co/0Vs3cDNC/IMG-20240330-174053-119.jpg" alt="Memory 1">
-                <img src="https://i.ibb.co/XrC8xzH1/Screenshot-20240214-120223-Instagram.jpg" alt="Memory 2">
-                <img src="https://i.ibb.co/wZvzJ6L9/IMG-20241118-WA0016.jpg" alt="Memory 3">
-                <img src="https://i.ibb.co/329RZhP/IMG-20240717-224533-821.webp" alt="Memory 4">
-                <img src="https://i.ibb.co/SX4dmYTK/IMG-20240722-173520-779.jpg" alt="Memory 5">
-            </div>
-        </div>
-        <div class="paragraphs">
+      </style>
+  </head>
+  <body>
+      <div class="background-animation"></div>
+      <div class="container">
+          <h1>For My <span class="heart">❤️</span> Sweetheart</h1>
+          <div class="paragraphs">
+              <p id="para1">Hello~<br><br>
+          If you’re seeing this then my idea worked out, this is one of my most beautiful work of all time<br>
+          It’s pretty obvious now that the playlist i had made has a purpose (Pre-planned it so long ago).</p>
+ 
+          <p id="para2">I’m sorry for delaying this a bit too much<333<br>
+          but im very sure its all worth it hehehe</p>
+          </div>
+ 
+          <div id="question-section">
+              <p>What is my sweetheart's favorite movie?</p>
+              <input type="text" id="answer" placeholder="Enter your answer">
+              <button onclick="checkAnswer()">Submit</button>
+          </div>
+ 
+          <div id="timeline" class="hidden">
+              <h2>Collection Of Me and My Sweetheart</h2>
+              <div class="timeline-content">
+               <!-- Replace these placeholder images with your Drive links -->
+               <img src="https://i.ibb.co/0Vs3cDNC/IMG-20240330-174053-119.jpg" alt="IMG-20240330-174053-119" border="0"></a>
+               <img src="https://i.ibb.co/XrC8xzH1/Screenshot-20240214-120223-Instagram.jpg" alt="All because of You" border="0"></a>
+               <img src="https://i.ibb.co/wZvzJ6L9/IMG-20241118-WA0016.jpg" alt="US<33" border="0"></a>
+               <img src="https://i.ibb.co/329RZhP/IMG-20240717-224533-821.webp" alt="That's You Obviously" border="0"></a>
+               <img src="https://i.ibb.co/SX4dmYTK/IMG-20240722-173520-779.jpg" alt="IMG-20240722-173520-779" border="0"></a>
+              </div>
+          </div>
+ 
+          <div class="paragraphs">
               <p id="para3">A whole year filled with so many events and so much trouble, at this point
   basically a part of these memories now. All this here was such a rollercoaster
   of emotions, all this is what created the strong bond between us…
@@ -266,13 +316,12 @@
   do, knowing I get to see you again in school. Well, no school for me anymore and
   it really aches a lot to be forcefully separated this way… coz
   </p>
-        <div id="video-section" class="hidden">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/3qfhltcj4Es" 
-                    title="YouTube video player" frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
-            <p style="margin-top: 30px; text-align: center; font-style: italic; color: #666; line-height: 1.6;">
-                 That still doesn’t change the fact that you are always gonna be my baby, any day<br>
+              <!-- In the video-section div -->
+  <div id="video-section" class="hidden">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/3qfhltcj4Es?si=ChvgF3sEhXKl1_JB&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ 
+      <p style="margin-top: 30px; text-align: center; font-style: italic; color: #666; line-height: 1.6;">
+          That still doesn’t change the fact that you are always gonna be my baby, any day<br>
           you feel off, any day you feel overwhelmed, any day you feel like life is bitter…<br>
           I’m always there for you my Love.<br><br>
           If i’m ready to type out and put such efforts into making this, of course i’ll work my<br>
@@ -283,12 +332,17 @@
           your pretty face across the open assembly during some of those lousy friday mornings<br>
           and getting to sit with you and have lunch with the feeling of “Butterflies in my Stomach”,<br>
           looking at each other with so many emotions trapped right behind our eyes.
-            </p>
-        </div>
+      </p>
+  </div>
+          </div>
+      </div>
 
-        <div id="captcha-section" class="hidden">
-            <h3>Select all that apply</h3>
-            <p>Select all images that are your favorites</p>
+    <div id="captcha-section" class="hidden">
+            <div class="captcha-header">
+                <h3>Select all that apply</h3>
+                <p>Select all images that are your favorites</p>
+            </div>
+            
             <div class="captcha-grid">
                 <div class="captcha-image" data-correct="true">
                     <img src="https://i.ibb.co/20Gwb5WY/1723356033027.jpg">
@@ -309,54 +363,158 @@
                     <img src="https://i.ibb.co/wNygPSYk/IMG-20240806-215825-268.jpg">
                 </div>
             </div>
-            <button onclick="validateCaptcha()">Verify</button>
+
+            <button onclick="validateCaptcha()" 
+                    style="margin-top: 25px;
+                           padding: 10px 24px;
+                           background: #1a73e8;
+                           color: white;
+                           border: none;
+                           border-radius: 4px;
+                           font-weight: 500;
+                           cursor: pointer;">
+                Verify
+            </button>
             <div id="captcha-error">Please try again</div>
         </div>
 
+<!-- Hidden content to reveal -->
         <div id="final-content" class="hidden">
             <h2>Our Special Memories</h2>
             <div class="photo-book">
-                <img src="memory1.jpg" alt="Memory 1">
-                <img src="memory2.jpg" alt="Memory 2">
-                <img src="memory3.jpg" alt="Memory 3">
-                <img src="memory4.jpg" alt="Memory 4">
+                <!-- Add your photos here -->
+                <img src="memory1.jpg" alt="Our memory 1">
+                <img src="memory2.jpg" alt="Our memory 2">
+                <img src="memory3.jpg" alt="Our memory 3">
+                <img src="memory4.jpg" alt="Our memory 4">
             </div>
+            
             <div class="final-message">
-                <p>Every moment with you is precious...</p>
+                <p>Every moment with you is precious... (your final message here)</p>
             </div>
         </div>
     </div>
-
-    <script>
-        let selectedImages = [];
+ 
+      <!-- Add this at the bottom of your body before </body> -->
+ <div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; 
+            transition: opacity 0.3s; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; background: #111; padding: 10px; border: 2px solid #00ff00;">
+     <div style="display: flex; gap: 10px; margin-right: 15px; z-index: 1;">
+         <button id="prevBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
+                   border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Previous track">❮</button>
+         <button id="nextBtn" style="padding: 8px 12px; background: #e74c3c; color: white; border: none; 
+                   border-radius: 5px; cursor: pointer; transition: all 0.3s;" title="Next track">❯</button>
+     </div>
+     <div style="position: relative; width: 240px; height: 100px; overflow: hidden;">
+         <iframe 
+             width="240" 
+             height="100" 
+             scrolling="no" 
+             frameborder="no" 
+             allow="autoplay" 
+             style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.9); 
+                    width: 280px; height: 120px; background: transparent;"
+             id="sc-widget"
+             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1995582387&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+         </iframe>
+     </div>
+ </div>
+ 
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script>
+      // Playlist configuration
+      const playlist = [
+      'https://api.soundcloud.com/tracks/1995582387', // Blue - Yung Kai
+      'https://api.soundcloud.com/tracks/373478999',  // Ed Sheeran - Perfect
+      'https://api.soundcloud.com/tracks/22121969',   // Senorita - Zindagi Na Milegi Dobara
+      'https://api.soundcloud.com/tracks/366184949',  // I Wanna Be Yours - Silas
+      ];
+ 
+      let currentTrack = 0;
+      let widget = null;
+ 
+      // Initialize player after user interaction
+      function initPlayer() {
+          widget = SC.Widget(document.getElementById('sc-widget'));
+ 
+          widget.bind(SC.Widget.Events.READY, () => {
+              widget.bind(SC.Widget.Events.FINISH, playNext);
+              widget.setVolume(50);
+              widget.play();
+          });
+ 
+          widget.bind(SC.Widget.Events.ERROR, (err) => {
+              console.error('SoundCloud Player Error:', err);
+              playNext();
+          });
+      }
+ 
+      // Load track by index
+      function loadTrack(index) {
+          currentTrack = index;
+          widget.load(playlist[currentTrack], {
+              auto_play: true,
+              color: '#ff5500',
+              hide_related: true,
+              show_comments: false,
+              show_user: false
+          });
+      }
+ 
+      // Navigation controls
+      document.getElementById('nextBtn').addEventListener('click', playNext);
+      document.getElementById('prevBtn').addEventListener('click', playPrev);
+ 
+      function playNext() {
+          currentTrack = (currentTrack + 1) % playlist.length;
+          loadTrack(currentTrack);
+      }
+ 
+      function playPrev() {
+          currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+          loadTrack(currentTrack);
+      }
+ 
+      // Start player on first user interaction
+      document.body.addEventListener('click', function init() {
+          if (!widget) {
+              initPlayer();
+              document.body.removeEventListener('click', init);
+          }
+      }, { once: true });
+  </script>
+  <script>
+          let selectedImages = [];
 
         function setupCaptcha() {
-            setTimeout(() => {
-                document.querySelectorAll('.captcha-image').forEach(container => {
-                    container.addEventListener('click', function() {
-                        this.classList.toggle('selected');
-                        const isCorrect = this.dataset.correct === 'true';
-                        
-                        if(this.classList.contains('selected')) {
-                            selectedImages.push(isCorrect);
-                        } else {
-                            selectedImages = selectedImages.filter(item => item !== isCorrect);
-                        }
-                    });
+            document.querySelectorAll('.captcha-image').forEach(container => {
+                container.addEventListener('click', function() {
+                    this.classList.toggle('selected');
+                    const isCorrect = this.dataset.correct === 'true';
+                    
+                    if(this.classList.contains('selected')) {
+                        selectedImages.push(isCorrect);
+                    } else {
+                        selectedImages = selectedImages.filter(item => item !== isCorrect);
+                    }
                 });
-            }, 100);
+            });
         }
 
         function validateCaptcha() {
-            const requiredCorrect = 2;
+            const requiredCorrect = 2; // Adjust based on your correct images
             const correctSelections = selectedImages.filter(Boolean).length;
             
             if(correctSelections === requiredCorrect) {
                 document.getElementById('captcha-error').style.display = 'none';
                 document.getElementById('final-content').classList.remove('hidden');
+                document.getElementById('captcha-section').classList.add('hidden');
+                
+                // Expand container if needed
                 document.querySelector('.container').style.paddingBottom = '60px';
             } else {
                 document.getElementById('captcha-error').style.display = 'block';
+                // Reset selections
                 selectedImages = [];
                 document.querySelectorAll('.captcha-image').forEach(img => {
                     img.classList.remove('selected');
@@ -364,31 +522,35 @@
             }
         }
 
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.toLowerCase();
-            const correctAnswers = ['zindagi na milegi dobara'];
-            
-            if(correctAnswers.includes(answer)) {
-                alert("Umma For You<333");
-                document.getElementById('timeline').classList.remove('hidden');
-                document.getElementById('video-section').classList.remove('hidden');
-                document.getElementById('captcha-section').classList.remove('hidden');
-                setupCaptcha();
-                document.querySelector('.container').style.minHeight = '600px';
-            } else {
-                alert("Close! Try again, sweetheart!");
-            }
+    // Update your existing checkAnswer function
+    function checkAnswer() {
+        const answer = document.getElementById('answer').value.toLowerCase();
+        const correctAnswers = ['zindagi na milegi dobara'];
+        
+        if(correctAnswers.includes(answer)) {
+            alert("Umma For You<333");
+            document.getElementById('timeline').classList.remove('hidden');
+            document.getElementById('video-section').classList.remove('hidden');
+            document.getElementById('captcha-section').classList.remove('hidden');
+            setupCaptcha();
+            document.querySelector('.container').style.minHeight = '600px';
         }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const paragraphs = document.querySelectorAll('.paragraphs p');
-            paragraphs.forEach((para, index) => {
-                setTimeout(() => {
-                    para.style.opacity = '1';
-                    para.style.transform = 'translateY(0)';
-                }, 300 * index);
-            });
-        });
-    </script>
-</body>
-</html>
+        } else {
+            alert("Close! But that's not quite it. Try again, sweetheart!");
+        }
+    }
+ 
+          // You can add more JavaScript here for additional functionality
+          document.addEventListener('DOMContentLoaded', function() {
+              // Animation for paragraphs
+              const paragraphs = document.querySelectorAll('.paragraphs p');
+              paragraphs.forEach((para, index) => {
+                  setTimeout(() => {
+                      para.style.opacity = '1';
+                      para.style.transform = 'translateY(0)';
+                  }, 300 * index);
+              });
+          });
+      </script>
+  </body>
+  </html>
