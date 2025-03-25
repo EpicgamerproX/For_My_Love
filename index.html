@@ -171,7 +171,7 @@
            }
 
            /* CAPTCHA Styles */
-    #captcha-section {
+         #captcha-section {
             margin: 40px 0;
             padding: 25px;
             background: #f8f9fa;
@@ -267,6 +267,14 @@
             background: #f8f9fa;
             border-radius: 8px;
         }
+         .container {
+           overflow: hidden; /* Ensures content stays within container */
+           transition: min-height 0.5s ease; /* Smooth height transitions */
+         }
+
+         #final-content {
+           padding-bottom: 40px; /* Add spacing at bottom */
+         }
       </style>
   </head>
   <body>
@@ -291,7 +299,6 @@
           <div id="timeline" class="hidden">
               <h2>Collection Of Me and My Sweetheart</h2>
               <div class="timeline-content">
-               <!-- Replace these placeholder images with your Drive links -->
                <img src="https://i.ibb.co/0Vs3cDNC/IMG-20240330-174053-119.jpg" alt="IMG-20240330-174053-119" border="0"></a>
                <img src="https://i.ibb.co/XrC8xzH1/Screenshot-20240214-120223-Instagram.jpg" alt="All because of You" border="0"></a>
                <img src="https://i.ibb.co/wZvzJ6L9/IMG-20241118-WA0016.jpg" alt="US<33" border="0"></a>
@@ -337,32 +344,31 @@
           </div>
       </div>
 
-    <div id="captcha-section" class="hidden">
-            <div class="captcha-header">
+           <div id="captcha-section" class="hidden">
+             <div class="captcha-header">
                 <h3>Select all that apply</h3>
                 <p>Select all images that are your favorites</p>
             </div>
-            
-            <div class="captcha-grid">
-                <div class="captcha-image" data-correct="true">
-                    <img src="https://i.ibb.co/20Gwb5WY/1723356033027.jpg">
-                </div>
-                <div class="captcha-image" data-correct="false">
-                    <img src="https://i.ibb.co/MkfTCQrD/IMG-20240901-WA0057.jpg">
-                </div>
-                <div class="captcha-image" data-correct="true">
-                    <img src="https://i.ibb.co/4g5mR8Tf/IMG-20240330-180337-655.jpg">
-                </div>
-                <div class="captcha-image" data-correct="false">
-                    <img src="https://i.ibb.co/BKnc1bkJ/IMG-20240522-WA0030.jpg">
-                </div>
-                <div class="captcha-image" data-correct="true">
-                    <img src="https://i.ibb.co/Ndn70r0p/IMG-20240510-WA0008.jpg">
-                </div>
-                <div class="captcha-image" data-correct="false">
-                    <img src="https://i.ibb.co/wNygPSYk/IMG-20240806-215825-268.jpg">
-                </div>
-            </div>
+             <div class="captcha-grid">
+               <div class="captcha-image" data-correct="true">
+                  <img src="https://i.ibb.co/20Gwb5WY/1723356033027.jpg">
+               </div>
+               <div class="captcha-image" data-correct="false">
+                  <img src="https://i.ibb.co/MkfTCQrD/IMG-20240901-WA0057.jpg">
+               </div>
+               <div class="captcha-image" data-correct="true">
+                  <img src="https://i.ibb.co/4g5mR8Tf/IMG-20240330-180337-655.jpg">
+               </div>
+               <div class="captcha-image" data-correct="false">
+                  <img src="https://i.ibb.co/BKnc1bkJ/IMG-20240522-WA0030.jpg">
+               </div>
+               <div class="captcha-image" data-correct="true">
+                  <img src="https://i.ibb.co/Ndn70r0p/IMG-20240510-WA0008.jpg">
+               </div>
+               <div class="captcha-image" data-correct="false">
+                  <img src="https://i.ibb.co/wNygPSYk/IMG-20240806-215825-268.jpg">
+               </div>
+           </div>
 
             <button onclick="validateCaptcha()" 
                     style="margin-top: 25px;
@@ -379,21 +385,20 @@
         </div>
 
 <!-- Hidden content to reveal -->
-        <div id="final-content" class="hidden">
-            <h2>Our Special Memories</h2>
-            <div class="photo-book">
-                <!-- Add your photos here -->
-                <img src="memory1.jpg" alt="Our memory 1">
-                <img src="memory2.jpg" alt="Our memory 2">
-                <img src="memory3.jpg" alt="Our memory 3">
-                <img src="memory4.jpg" alt="Our memory 4">
-            </div>
+           <div id="final-content" class="hidden">
+             <h2>Our Special Memories</h2>
+             <div class="photo-book">
+               <img src="memory1.jpg" alt="Our memory 1">
+               <img src="memory2.jpg" alt="Our memory 2">
+               <img src="memory3.jpg" alt="Our memory 3">
+               <img src="memory4.jpg" alt="Our memory 4">
+             </div>
             
-            <div class="final-message">
-                <p>Every moment with you is precious... (your final message here)</p>
-            </div>
-        </div>
-    </div>
+             <div class="final-message">
+               <p>Every moment with you is precious... (your final message here)</p>
+             </div>
+           </div>
+  </div>
  
       <!-- Add this at the bottom of your body before </body> -->
  <div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; 
@@ -487,8 +492,9 @@
           let selectedImages = [];
 
         function setupCaptcha() {
-            document.querySelectorAll('.captcha-image').forEach(container => {
-                container.addEventListener('click', function() {
+              setTimeout(() => {
+                document.querySelectorAll('.captcha-image').forEach(container => {
+                  container.addEventListener('click', function() {
                     this.classList.toggle('selected');
                     const isCorrect = this.dataset.correct === 'true';
                     
@@ -523,22 +529,21 @@
         }
 
     // Update your existing checkAnswer function
-    function checkAnswer() {
-        const answer = document.getElementById('answer').value.toLowerCase();
-        const correctAnswers = ['zindagi na milegi dobara'];
-        
-        if(correctAnswers.includes(answer)) {
-            alert("Umma For You<333");
-            document.getElementById('timeline').classList.remove('hidden');
-            document.getElementById('video-section').classList.remove('hidden');
-            document.getElementById('captcha-section').classList.remove('hidden');
-            setupCaptcha();
-            document.querySelector('.container').style.minHeight = '600px';
-        }
-        } else {
-            alert("Close! But that's not quite it. Try again, sweetheart!");
-        }
+function checkAnswer() {
+    const answer = document.getElementById('answer').value.toLowerCase();
+    const correctAnswers = ['zindagi na milegi dobara'];
+    
+    if(correctAnswers.includes(answer)) {
+        alert("Umma For You<333");
+        document.getElementById('timeline').classList.remove('hidden');
+        document.getElementById('video-section').classList.remove('hidden');
+        document.getElementById('captcha-section').classList.remove('hidden');
+        setupCaptcha();
+        document.querySelector('.container').style.minHeight = '600px';
+    } else { // Fixed this brace placement
+        alert("Close! But that's not quite it. Try again, sweetheart!");
     }
+}
  
           // You can add more JavaScript here for additional functionality
           document.addEventListener('DOMContentLoaded', function() {
