@@ -179,7 +179,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
-        margin: 20px 0;
+        margin: 20px auto;
         max-width: 600px;
     }
 
@@ -191,6 +191,12 @@
         cursor: pointer;
         transition: transform 0.3s, box-shadow 0.3s;
         border: 2px solid transparent;
+        aspect-ratio: 1/1;
+    }
+    
+    .captcha-image {
+        min-height: 0; /* Fixes grid overflow issue */
+        min-width: 0; /* Fixes grid overflow issue */
     }
 
     .captcha-image.selected {
@@ -294,13 +300,13 @@
       </div>
 
     <div id="captcha-section" class="hidden">
-    <h3>Prove You're Not Some Random Nigga</h3>
+    <h3>Prove You're Not A Robot</h3>
     <p>Select images that are your most favorites:</p>
     
     <div class="captcha-grid">
         <!-- Replace these with your actual images -->
         <img src="https://i.ibb.co/20Gwb5WY/1723356033027.jpg" class="captcha-image" data-correct="true">
-        <img src="https://i.ibb.co/MkfTCQrD/IMG-20240901-WA0057.jpg" data-correct="false">
+        <img src="https://i.ibb.co/MkfTCQrD/IMG-20240901-WA0057.jpg" class="captcha-image" data-correct="false">
         <img src="https://i.ibb.co/4g5mR8Tf/IMG-20240330-180337-655.jpg" class="captcha-image" data-correct="true">
         <img src="https://i.ibb.co/BKnc1bkJ/IMG-20240522-WA0030.jpg" class="captcha-image" data-correct="false">
         <img src="https://i.ibb.co/Ndn70r0p/IMG-20240510-WA0008.jpg" class="captcha-image" data-correct="true">
