@@ -168,6 +168,41 @@
            #nextBtn:hover {
                background-color: #6C5CE7 !important;
            }
+
+           /* CAPTCHA Styles */
+    #captcha-section {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    .captcha-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .captcha-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 2px solid transparent;
+    }
+
+    .captcha-image.selected {
+        border-color: #e74c3c;
+        transform: scale(0.95);
+        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+    }
+
+    #captcha-error {
+        color: #e74c3c;
+        margin-top: 10px;
+        display: none;
+    }
       </style>
   </head>
   <body>
@@ -237,6 +272,35 @@
   </div>
           </div>
       </div>
+
+    <div id="captcha-section" class="hidden">
+    <h3>Prove You're Not Some Random Nigga</h3>
+    <p>Select images that are your most favorites:</p>
+    
+    <div class="captcha-grid">
+        <!-- Replace these with your actual images -->
+        <img src="https://i.ibb.co/20Gwb5WY/1723356033027.jpg" class="captcha-image" data-correct="true">
+        <img src="https://i.ibb.co/MkfTCQrD/IMG-20240901-WA0057.jpg" data-correct="false">
+        <img src="https://i.ibb.co/4g5mR8Tf/IMG-20240330-180337-655.jpg" class="captcha-image" data-correct="true">
+        <img src="https://i.ibb.co/BKnc1bkJ/IMG-20240522-WA0030.jpg" class="captcha-image" data-correct="false">
+        <img src="https://i.ibb.co/Ndn70r0p/IMG-20240510-WA0008.jpg" class="captcha-image" data-correct="true">
+        <img src="https://i.ibb.co/wNygPSYk/IMG-20240806-215825-268.jpg" class="captcha-image" data-correct="false">
+    </div>
+
+    <button onclick="validateCaptcha()" style="margin-top: 20px;">Confirm </button>
+    <div id="captcha-error">Not quite, Try again</div>
+</div>
+
+<!-- Hidden content to reveal -->
+<div id="final-content" class="hidden">
+    <!-- Your final paragraph and photo book content here -->
+    <div class="paragraphs">
+        <h2>HAH MORE PICS FOR YOU HEHEHEHEHE</h2>
+        <div class="photo-book">
+            <!-- Add your photo book content here -->
+        </div>
+    </div>
+</div>
  
       <!-- Add this at the bottom of your body before </body> -->
  <div style="position: fixed; bottom: 20px; right: 20px; width: 340px; height: 100px; opacity: 0.8; 
@@ -326,19 +390,57 @@
           }
       }, { once: true });
   </script>
-      <script>
-          function checkAnswer() {
-              const answer = document.getElementById('answer').value.toLowerCase();
-              const correctAnswers = ['zindagi na milegi dobara'];
- 
-              if (correctAnswers.includes(answer)) {
-                  alert("Umma For You<333");
-                  document.getElementById('timeline').classList.remove('hidden');
-                  document.getElementById('video-section').classList.remove('hidden');
-              } else {
-                  alert("Close! But that's not quite it. Try again, sweetheart!");
-              }
-          }
+  <script>
+    let selectedImages = [];
+
+    function setupCaptcha() {
+        document.querySelectorAll('.captcha-image').forEach(img => {
+            img.addEventListener('click', function() {
+                this.classList.toggle('selected');
+                const isCorrect = this.dataset.correct === 'true';
+                
+                if(this.classList.contains('selected')) {
+                    selectedImages.push(isCorrect);
+                } else {
+                    selectedImages = selectedImages.filter(item => item !== isCorrect);
+                }
+            });
+        });
+    }
+
+    function validateCaptcha() {
+        const requiredCorrect = 3; // Number of correct images needed
+        const correctSelections = selectedImages.filter(Boolean).length;
+        
+        if(correctSelections === requiredCorrect) {
+            document.getElementById('captcha-error').style.display = 'none';
+            document.getElementById('final-content').classList.remove('hidden');
+            document.getElementById('captcha-section').classList.add('hidden');
+        } else {
+            document.getElementById('captcha-error').style.display = 'block';
+            // Reset after wrong attempt
+            selectedImages = [];
+            document.querySelectorAll('.captcha-image').forEach(img => {
+                img.classList.remove('selected');
+            });
+        }
+    }
+
+    // Update your existing checkAnswer function
+    function checkAnswer() {
+        const answer = document.getElementById('answer').value.toLowerCase();
+        const correctAnswers = ['zindagi na milegi dobara'];
+        
+        if(correctAnswers.includes(answer)) {
+            alert("Umma For You<333");
+            document.getElementById('timeline').classList.remove('hidden');
+            document.getElementById('video-section').classList.remove('hidden');
+            document.getElementById('captcha-section').classList.remove('hidden');
+            setupCaptcha();
+        } else {
+            alert("Close! But that's not quite it. Try again, sweetheart!");
+        }
+    }
  
           // You can add more JavaScript here for additional functionality
           document.addEventListener('DOMContentLoaded', function() {
