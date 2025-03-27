@@ -228,72 +228,6 @@
              border-radius: 10px;
              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
            }
-               
-            #chat-button {
-              background: #000;
-              color: white;
-              padding: 12px 30px;
-              border-radius: 25px;
-              border: none;
-              cursor: pointer;
-              font-weight: 500;
-              transition: all 0.3s;
-              display: none;
-              margin: 20px auto;
-              box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            }
-
-            #chat-button:hover {
-              background: #333;
-              transform: translateY(-2px);
-            }
-
-            .chat-container {
-              position: fixed;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background: rgba(0,0,0,0.5);
-              display: none;
-              z-index: 1000;
-            }
-
-            .chat-box {
-              background: white;
-              width: 400px;
-              max-width: 90%;
-              margin: 50px auto;
-              border-radius: 15px;
-              padding: 20px;
-              box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
-    #chat-messages {
-        height: 300px;
-        overflow-y: auto;
-        border: 1px solid #eee;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-    }
-
-    #chat-input {
-        width: calc(100% - 90px);
-        padding: 10px;
-        border: 2px solid #eee;
-        border-radius: 8px;
-        margin-right: 10px;
-    }
-
-    .send-button {
-        background: #000;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-    }
       </style>
   </head>
   <body>
@@ -313,18 +247,6 @@
               <p>What is my sweetheart's favorite movie?</p>
               <input type="text" id="answer" placeholder="Enter your answer">
               <button onclick="checkAnswer()">Submit</button>
-          </div>
-
-          <button id="chat-button" onclick="showChat()">💬 Open Our Private Chat</button>
-          
-          <div class="chat-container" id="chat-container">
-            <div class="chat-box">
-              <div id="chat-messages"></div>
-              <div>
-                <input type="text" id="chat-input" placeholder="Type your message...">
-                <button class="send-button" onclick="sendMessage()">Send</button>
-              </div>
-            </div>
           </div>
 
           <div id="timeline" class="hidden">
@@ -553,36 +475,6 @@
             alert("Close! But that's not quite it. Try again, sweetheart!");
         }
     }
-    function showChat() {
-        document.getElementById('chat-container').style.display = 'block';
-    }
-
-    function sendMessage() {
-        const input = document.getElementById('chat-input');
-        const message = input.value.trim();
-        const messagesDiv = document.getElementById('chat-messages');
-        
-        if(message) {
-            messagesDiv.innerHTML += `<div style="margin: 10px 0; padding: 8px 12px; background: #f0f2f5; border-radius: 15px;">${message}</div>`;
-            input.value = '';
-            
-            // Auto-scroll to bottom
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            
-            // Add simulated response after 1 second
-            setTimeout(() => {
-                messagesDiv.innerHTML += `<div style="margin: 10px 0; padding: 8px 12px; background: #e74c3c; color: white; border-radius: 15px; text-align: right;">I love you more every day ❤️</div>`;
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            }, 1000);
-        }
-    }
-
-    // Close chat when clicking outside
-    document.getElementById('chat-container').addEventListener('click', function(e) {
-        if(e.target === this) {
-            this.style.display = 'none';
-        }
-    });
           // You can add more JavaScript here for additional functionality
           document.addEventListener('DOMContentLoaded', function() {
               // Animation for paragraphs
