@@ -578,25 +578,27 @@
 
                 // Position calculation
                 // Updated position calculation
-                const screenMargin = 20; // Minimum margin from screen edges
-                const containerCenter = window.innerWidth / 2;
-                const maxLeftPosition = containerCenter - (containerRect.width / 2) - 200;
-                const minLeftPosition = screenMargin;
-                const maxRightPosition = window.innerWidth - screenMargin;
+                const screenMargin = window.innerWidth * 0.02; // 2% of screen width
+                const containerPadding = 100; // Distance from container
 
                 if (position.side === 'left') {
+                // Calculate maximum possible left position
+                  const maxLeft = containerRect.left - containerPadding;
+               // Ensure we stay within screen margins
                   const leftPosition = Math.max(
-                    containerRect.left - 200 - position.horizontalOffset,
+                    maxLeft - position.horizontalOffset,
                     screenMargin
                   );
                   img.style.left = `${leftPosition}px`;
                 } else {
-                const rightPosition = Math.min(
-                  containerRect.right + 100 + position.horizontalOffset,
-                  maxRightPosition
-                );
-                  
-                img.style.left = `${rightPosition}px`;
+                // Calculate minimum possible right position
+                  const minRight = containerRect.right + containerPadding;
+                // Ensure we stay within screen margins
+                  const rightPosition = Math.min(
+                    minRight + position.horizontalOffset,
+                    window.innerWidth - screenMargin
+                  );
+                  img.style.left = `${rightPosition}px`;
                 }
                   
                 img.style.top = `${position.vertical}%`;
