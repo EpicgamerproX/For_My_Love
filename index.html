@@ -261,6 +261,9 @@
         filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
         animation: float 4s ease-in-out infinite;
         filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        left: 0;
+        top: 0;
+        transform: translate(-50%, 0) rotate(var(--rotate));
     }
     @keyframes float {
         0%, 100% { 
@@ -574,12 +577,28 @@
                 img.src = `https://cataas.com/cat?width=150&height=150&cache=${randomId}`;
 
                 // Position calculation
-                if (position.side === 'left') {
-                    img.style.left = `calc(50% - ${containerRect.width/2 + 180 + position.horizontalOffset}px)`;
-                } else {
-                    img.style.left = `calc(50% + ${containerRect.width/2 + position.horizontalOffset}px)`;
-                }
+                // Updated position calculation
+                const screenMargin = 20; // Minimum margin from screen edges
+                const containerCenter = window.innerWidth / 2;
+                const maxLeftPosition = containerCenter - (containerRect.width / 2) - 200;
+                const minLeftPosition = screenMargin;
+                const maxRightPosition = window.innerWidth - screenMargin;
 
+                if (position.side === 'left') {
+                  const leftPosition = Math.max(
+                    containerRect.left - 200 - position.horizontalOffset,
+                    screenMargin
+                  );
+                  img.style.left = `${leftPosition}px`;
+                } else {
+                const rightPosition = Math.min(
+                  containerRect.right + 100 + position.horizontalOffset,
+                  maxRightPosition
+                );
+                  
+                img.style.left = `${rightPosition}px`;
+                }
+                  
                 img.style.top = `${position.vertical}%`;
                 
                 document.body.appendChild(img);
