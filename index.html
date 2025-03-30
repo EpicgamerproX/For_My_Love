@@ -225,16 +225,26 @@
              display: grid;
              grid-template-columns: repeat(2, 1fr);
              gap: 15px;
-             margin-top: 30px;
+             margin: 30px auto;
+             max-width: 600px;
            }
 
            .photo-book img {
              width: 100%;
              height: 250px;
+             padding-bottom: 100%;
              object-fit: cover;
              border-radius: 10px;
              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+             position: relative;
            }
+        
+            .photo-book div {
+              position: relative;
+              overflow: hidden;
+              border-radius: 10px;
+            }
+        
       #catButton {
         position: fixed;
         bottom: 100px;
@@ -376,10 +386,18 @@
             <h2>HEHE MORE MEMORIES</h2>
             <div class="photo-book">
                 <!-- Add your photo book images here -->
-                <img src="https://i.ibb.co/n8qp7rNk/IMG-20240617-122200-045.jpg" alt="Memory 1">
-                <img src="https://i.ibb.co/TxVcTQ1h/IMG-20240804-201407-563.jpg" alt="Memory 2">
-                <img src="https://i.ibb.co/p6XY3jgb/IMG-20240918-171630-341.webp" alt="Memory 3">
-                <img src="https://i.ibb.co/ksRwrLsk/IMG-20241103-214106-180.jpg" alt="Memory 4">
+                <div>
+                  <img src="https://i.ibb.co/n8qp7rNk/IMG-20240617-122200-045.jpg" alt="Memory 1">
+                </div>
+                <div>
+                  <img src="https://i.ibb.co/TxVcTQ1h/IMG-20240804-201407-563.jpg" alt="Memory 2">
+                </div>
+                <div>
+                  <img src="https://i.ibb.co/p6XY3jgb/IMG-20240918-171630-341.webp" alt="Memory 3">
+                </div>
+                <div>
+                  <img src="https://i.ibb.co/ksRwrLsk/IMG-20241103-214106-180.jpg" alt="Memory 4">
+                </div>
             </div>
             <p style="margin-top: 20px;">
                 This is our forever story... [your final message]
