@@ -228,6 +228,37 @@
              border-radius: 10px;
              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
            }
+      #catButton {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        padding: 12px 25px;
+        background-color: #6C5CE7;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+        transition: all 0.3s ease;
+        display: none;
+    }
+
+    #catButton:hover {
+        background-color: #5B4BC4;
+        transform: translateX(-50%) scale(1.05);
+    }
+
+    .cat-image {
+        position: fixed;
+        max-width: 180px;
+        pointer-events: none;
+        transition: all 0.5s ease;
+        z-index: -1;
+        opacity: 0.9;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
       </style>
   </head>
   <body>
@@ -260,7 +291,9 @@
                <img src="https://i.ibb.co/SX4dmYTK/IMG-20240722-173520-779.jpg" alt="IMG-20240722-173520-779" border="0"></a>
               </div>
           </div>
- 
+        
+          <button id="catButton" onclick="generateCats()">Surprise Cat Attack! 🐾</button>
+        
           <div class="paragraphs">
               <p id="para3">A whole year filled with so many events and so much trouble, at this point
   basically a part of these memories now. All this here was such a rollercoaster
@@ -487,5 +520,64 @@
               });
           });
       </script>
+      <script>
+    function generateCats() {
+        const numCats = 7;
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const containerWidth = 800; // Match your container max-width
+
+        for (let i = 0; i < numCats; i++) {
+            const img = document.createElement('img');
+            img.src = `https://placekitten.com/${150 + Math.floor(Math.random() * 100)}/${150 + Math.floor(Math.random() * 100)}`;
+            img.className = 'cat-image';
+            
+            // Random rotation between -25 and 25 degrees
+            const rotation = (Math.random() * 50 - 25);
+            img.style.transform = `rotate(${rotation}deg)`;
+            
+            // Position cats outside container area (left or right)
+            const leftPercentage = Math.random() < 0.5 ? 
+                Math.random() * 20 : // Left side
+                80 + Math.random() * 20; // Right side
+
+            // Random vertical position (avoid top 20% and bottom 20%)
+            const topPercentage = 20 + Math.random() * 60;
+
+            img.style.left = `${leftPercentage}%`;
+            img.style.top = `${topPercentage}%`;
+            
+            // Add slight animation
+            setTimeout(() => {
+                img.style.opacity = '0.8';
+                img.style.transform = `rotate(${rotation}deg) translateY(${Math.random() * 20}px)`;
+            }, 50);
+
+            document.body.appendChild(img);
+            
+            // Remove cats after 10 seconds
+            setTimeout(() => {
+                img.remove();
+            }, 10000);
+        }
+    }
+
+    // Update the checkAnswer function to show the cat button
+    function checkAnswer() {
+        const answer = document.getElementById('answer').value.toLowerCase();
+        const correctAnswers = ['zindagi na milegi dobara'];
+        
+        if(correctAnswers.includes(answer)) {
+            alert("Umma For You<333");
+            document.getElementById('timeline').classList.remove('hidden');
+            document.getElementById('video-section').classList.remove('hidden');
+            document.getElementById('captcha-section').classList.remove('hidden');
+            document.getElementById('catButton').style.display = 'block'; // Show cat button
+            setupCaptcha();
+        } else {
+            alert("Close! But that's not quite it. Try again, sweetheart!");
+        }
+    }
+</script>
   </body>
   </html>
