@@ -259,6 +259,10 @@
         opacity: 0.9;
         filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
     }
+            @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(var(--rotate)); }
+        50% { transform: translateY(-20px) rotate(var(--rotate)); }
+    }
       </style>
   </head>
   <body>
@@ -524,35 +528,33 @@
     function generateCats() {
         const numCats = 7;
         const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const containerWidth = 800; // Match your container max-width
+        const container = document.querySelector('.container');
+        const containerRect = container.getBoundingClientRect();
 
         for (let i = 0; i < numCats; i++) {
             const img = document.createElement('img');
-            img.src = `https://placekitten.com/${150 + Math.floor(Math.random() * 100)}/${150 + Math.floor(Math.random() * 100)}`;
             img.className = 'cat-image';
+            
+            // Use a reliable cat image source with random cache busting
+            const randomId = Math.floor(Math.random() * 1000);
+            img.src = `https://cataas.com/cat?width=150&height=150&cache=${randomId}`;
             
             // Random rotation between -25 and 25 degrees
             const rotation = (Math.random() * 50 - 25);
-            img.style.transform = `rotate(${rotation}deg)`;
+            img.style.setProperty('--rotate', `${rotation}deg`);
+
+            // Position cats outside container area
+            const side = Math.random() < 0.5 ? 'left' : 'right';
+            const verticalPos = Math.random() * 80 + 10; // 10% to 90% vertical position
+
+            if (side === 'left') {
+                img.style.left = `${containerRect.left - 200}px`;
+            } else {
+                img.style.left = `${containerRect.right + 50}px`;
+            }
+
+            img.style.top = `${verticalPos}%`;
             
-            // Position cats outside container area (left or right)
-            const leftPercentage = Math.random() < 0.5 ? 
-                Math.random() * 20 : // Left side
-                80 + Math.random() * 20; // Right side
-
-            // Random vertical position (avoid top 20% and bottom 20%)
-            const topPercentage = 20 + Math.random() * 60;
-
-            img.style.left = `${leftPercentage}%`;
-            img.style.top = `${topPercentage}%`;
-            
-            // Add slight animation
-            setTimeout(() => {
-                img.style.opacity = '0.8';
-                img.style.transform = `rotate(${rotation}deg) translateY(${Math.random() * 20}px)`;
-            }, 50);
-
             document.body.appendChild(img);
             
             // Remove cats after 10 seconds
