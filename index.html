@@ -252,16 +252,23 @@
 
     .cat-image {
         position: fixed;
-        max-width: 180px;
+        width: 150px;
+        height: 150px;
         pointer-events: none;
         transition: all 0.5s ease;
-        z-index: -1;
+        z-index: 999;
         opacity: 0.9;
         filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        animation: float 4s ease-in-out infinite;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
     }
-            @keyframes float {
-        0%, 100% { transform: translateY(0) rotate(var(--rotate)); }
-        50% { transform: translateY(-20px) rotate(var(--rotate)); }
+    @keyframes float {
+        0%, 100% { 
+            transform: translate(-50%, 0) rotate(var(--rotate));
+        }
+        50% { 
+            transform: translate(-50%, -20px) rotate(var(--rotate));
+        }
     }
       </style>
   </head>
@@ -526,41 +533,63 @@
       </script>
       <script>
     function generateCats() {
-        const numCats = 7;
-        const viewportWidth = window.innerWidth;
+        const numCats = 5; // Reduced number for better spacing
         const container = document.querySelector('.container');
         const containerRect = container.getBoundingClientRect();
+        const positionsUsed = [];
+
+        const getRandomPosition = () => {
+            let position;
+            let attempts = 0;
+            const minDistance = 100; // Minimum distance between cats in pixels
+            
+            do {
+                position = {
+                    side: Math.random() < 0.5 ? 'left' : 'right',
+                    vertical: 20 + Math.random() * 60, // 20% to 80% vertical
+                    horizontalOffset: Math.random() * 50 // Random horizontal spread
+                };
+                attempts++;
+            } while (positionsUsed.some(pos => 
+                Math.abs(pos.vertical - position.vertical) < 15 &&
+                pos.side === position.side
+            ) && attempts < 100);
+
+            positionsUsed.push(position);
+            return position;
+        };
 
         for (let i = 0; i < numCats; i++) {
-            const img = document.createElement('img');
-            img.className = 'cat-image';
-            
-            // Use a reliable cat image source with random cache busting
-            const randomId = Math.floor(Math.random() * 1000);
-            img.src = `https://cataas.com/cat?width=150&height=150&cache=${randomId}`;
-            
-            // Random rotation between -25 and 25 degrees
-            const rotation = (Math.random() * 50 - 25);
-            img.style.setProperty('--rotate', `${rotation}deg`);
-
-            // Position cats outside container area
-            const side = Math.random() < 0.5 ? 'left' : 'right';
-            const verticalPos = Math.random() * 80 + 10; // 10% to 90% vertical position
-
-            if (side === 'left') {
-                img.style.left = `${containerRect.left - 200}px`;
-            } else {
-                img.style.left = `${containerRect.right + 50}px`;
-            }
-
-            img.style.top = `${verticalPos}%`;
-            
-            document.body.appendChild(img);
-            
-            // Remove cats after 10 seconds
             setTimeout(() => {
-                img.remove();
-            }, 10000);
+                const img = document.createElement('img');
+                img.className = 'cat-image';
+                
+                // Random rotation between -15 and 15 degrees
+                const rotation = (Math.random() * 30 - 15);
+                img.style.setProperty('--rotate', `${rotation}deg`);
+
+                // Get unique position
+                const position = getRandomPosition();
+                const randomId = Math.floor(Math.random() * 1000);
+                img.src = `https://cataas.com/cat?width=150&height=150&cache=${randomId}`;
+
+                // Position calculation
+                if (position.side === 'left') {
+                    img.style.left = `calc(50% - ${containerRect.width/2 + 180 + position.horizontalOffset}px)`;
+                } else {
+                    img.style.left = `calc(50% + ${containerRect.width/2 + position.horizontalOffset}px)`;
+                }
+
+                img.style.top = `${position.vertical}%`;
+                
+                document.body.appendChild(img);
+
+                // Remove cats after 8 seconds
+                setTimeout(() => {
+                    img.remove();
+                }, 8000);
+
+            }, i * 200); // Stagger creation by 200ms
         }
     }
 
