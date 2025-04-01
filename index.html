@@ -227,22 +227,24 @@
              gap: 15px;
              margin: 30px auto;
              max-width: 600px;
+             grid-auto-rows: 1fr;
            }
 
            .photo-book img {
              width: 100%;
-             height: 250px;
+             height: 100%;
              padding-bottom: 100%;
              object-fit: cover;
              border-radius: 10px;
              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-             position: relative;
+             position: absolute;
            }
         
             .photo-book div {
               position: relative;
               overflow: hidden;
               border-radius: 10px;
+              aspect-ratio: 1/1;
             }
         
       #catButton {
@@ -391,6 +393,8 @@
                 </div>
                 <div>
                   <img src="https://i.ibb.co/TxVcTQ1h/IMG-20240804-201407-563.jpg" alt="Memory 2">
+                </div>
+                <div>
                   <img src="https://i.ibb.co/ms42K0G/CHUT.png" alt="Memory 3">
                 </div>
                 <div>
